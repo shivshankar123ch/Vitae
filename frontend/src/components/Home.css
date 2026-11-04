@@ -1,0 +1,400 @@
+.employee-dashboard {
+  min-height: 100vh;
+  color: #352238;
+  background:
+    radial-gradient(ellipse at 8% 20%, rgba(255, 220, 239, 0.42), transparent 34%),
+    #fff8fc;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.employee-dashboard *,
+.employee-dashboard *::before,
+.employee-dashboard *::after {
+  box-sizing: border-box;
+}
+
+.employee-dashboard .navbar {
+  width: 100%;
+  height: auto;
+  min-height: 76px;
+  padding: 12px max(28px, calc((100% - 1240px) / 2));
+  border: 0;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 4px 24px rgba(105, 43, 82, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.employee-dashboard .navbar-container {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  gap: 24px;
+}
+
+.employee-dashboard .nav-right {
+  min-width: 0;
+  margin: 0;
+}
+
+.employee-dashboard .nav-menu {
+  justify-content: flex-end;
+  gap: clamp(14px, 2vw, 28px);
+  margin: 0;
+}
+
+.employee-dashboard .nav-menu a {
+  margin: 0;
+  color: #67495f;
+  transition: color 160ms ease;
+}
+
+.employee-dashboard .nav-menu a:hover {
+  color: #cf3985;
+}
+
+.employee-dashboard .nav-item {
+  padding: 10px 0;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+}
+
+.employee-dashboard .badge {
+  top: -1px;
+  right: -15px;
+  min-width: 19px;
+  padding: 3px 5px;
+  background: #e54891;
+  font-size: 10px;
+  text-align: center;
+}
+
+.employee-dashboard .premium-btn {
+  width: auto;
+  height: auto;
+  padding: 11px 17px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #eb68a5, #ce3984);
+  box-shadow: 0 7px 18px rgba(206, 57, 132, 0.22);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.employee-dashboard .premium-btn:hover,
+.employee-dashboard .view-btn:hover {
+  background: linear-gradient(135deg, #db4f94, #b92873);
+  transform: translateY(-2px);
+}
+
+.employee-dashboard .profile-container {
+  gap: 9px;
+  padding: 5px 12px 5px 6px;
+  border: 1px solid #f4d5e5;
+  background: #fff5fa;
+}
+
+.employee-dashboard .profile-container:hover {
+  background: #ffedf6;
+}
+
+.employee-dashboard .avatar {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #f18ab7, #c83780);
+  box-shadow: 0 3px 9px rgba(190, 52, 122, 0.2);
+  font-size: 15px;
+}
+
+.employee-dashboard .user-name {
+  margin: 0;
+  color: #56364e;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.employee-dashboard .hero {
+  position: relative;
+  overflow: hidden;
+  padding: 54px 24px 58px;
+  background:
+    radial-gradient(ellipse at 84% 20%, rgba(255, 211, 235, 0.25), transparent 30%),
+    radial-gradient(ellipse at 14% 100%, rgba(255, 186, 218, 0.17), transparent 33%),
+    linear-gradient(118deg, #702c60, #a63878 54%, #d34a91);
+  text-align: center;
+}
+
+.employee-dashboard .hero::after {
+  position: absolute;
+  right: 8%;
+  bottom: -115px;
+  width: 310px;
+  height: 190px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  content: "";
+  transform: rotate(-22deg);
+}
+
+.employee-dashboard .hero h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(29px, 4vw, 43px);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.employee-dashboard .hero p {
+  position: relative;
+  z-index: 1;
+  margin: 12px 0 0;
+  color: rgba(255, 242, 249, 0.86);
+  font-size: 15px;
+}
+
+.employee-dashboard .layout {
+  width: min(100% - 48px, 1240px);
+  grid-template-columns: minmax(250px, 290px) minmax(0, 1fr);
+  align-items: start;
+  gap: 26px;
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.employee-dashboard .sidebar {
+  width: auto;
+  gap: 18px;
+}
+
+.employee-dashboard .sidebar > .card {
+  padding: 14px;
+  border: 1px solid #f4e2ec;
+  border-radius: 17px;
+  box-shadow: 0 8px 24px rgba(105, 43, 82, 0.06);
+}
+
+.employee-dashboard .search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.employee-dashboard .search-input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 13px;
+  border: 1px solid #f0d9e6;
+  border-radius: 11px;
+  outline: none;
+  background: #fffafd;
+  color: #493346;
+  font: inherit;
+  font-size: 12px;
+}
+
+.employee-dashboard .search-input:focus {
+  border-color: #dc6ca2;
+  box-shadow: 0 0 0 3px rgba(220, 108, 162, 0.13);
+}
+
+.employee-dashboard .search-icon-btn {
+  flex: 0 0 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 11px;
+  background: #f9e4ef;
+  cursor: pointer;
+}
+
+.employee-dashboard .sidebar > .card > h3,
+.employee-dashboard .sidebar > .card > p {
+  display: none;
+}
+
+.employee-dashboard .sidebar-card {
+  margin: 0;
+  padding: 19px;
+  border: 1px solid #f3dfeb;
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(105, 43, 82, 0.055);
+}
+
+.employee-dashboard .sidebar-card h3 {
+  margin: 0 0 13px;
+  color: #57344d;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.employee-dashboard .sidebar-card p {
+  margin: 0 0 11px;
+  color: #806c7d;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.employee-dashboard .sidebar-card label {
+  gap: 9px;
+  margin: 0 0 11px;
+  color: #6f5a6a;
+  font-size: 12px;
+}
+
+.employee-dashboard .sidebar-card label:last-child {
+  margin-bottom: 0;
+}
+
+.employee-dashboard .sidebar-card input[type="radio"],
+.employee-dashboard .sidebar-card input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: #d9478d;
+}
+
+.employee-dashboard .jobs-section {
+  min-height: 0;
+  gap: 16px;
+  padding: 0;
+  background: transparent;
+}
+
+.employee-dashboard .job-card {
+  padding: 23px 25px;
+  border: 1px solid #f2dce8;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(105, 43, 82, 0.055);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.employee-dashboard .job-card:hover {
+  border-color: #e9a6c7;
+  box-shadow: 0 15px 32px rgba(153, 60, 111, 0.12);
+  transform: translateY(-3px);
+}
+
+.employee-dashboard .job-content h2 {
+  margin: 0 0 13px;
+  color: #a53270;
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+.employee-dashboard .job-content p {
+  margin: 8px 0;
+  color: #725f6e;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.employee-dashboard .job-content p strong {
+  color: #493447;
+  font-weight: 700;
+}
+
+.employee-dashboard .view-btn {
+  margin-top: 12px;
+  padding: 11px 19px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e768a3, #ca3983);
+  box-shadow: 0 6px 16px rgba(202, 57, 131, 0.2);
+  font-size: 12px;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.employee-dashboard .navbar-notification,
+.employee-dashboard .popup-message,
+.employee-dashboard .apply-status-banner {
+  color: #8e2862;
+}
+
+.employee-dashboard .apply-status-banner {
+  width: min(100% - 48px, 1240px);
+  margin: 18px auto 0;
+  padding: 13px 17px;
+  border: 1px solid #f1c4db;
+  border-radius: 12px;
+  background: #fff0f7;
+}
+
+@media (max-width: 820px) {
+  .employee-dashboard .navbar {
+    padding: 12px 20px;
+  }
+
+  .employee-dashboard .navbar-container {
+    flex-wrap: wrap;
+  }
+
+  .employee-dashboard .nav-right {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .employee-dashboard .nav-menu {
+    width: 100%;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .employee-dashboard .layout {
+    width: min(100% - 32px, 600px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding-top: 22px;
+  }
+
+  .employee-dashboard .sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .employee-dashboard .sidebar > .card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .employee-dashboard .navbar {
+    padding: 12px 15px;
+  }
+
+  .employee-dashboard .nav-menu {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .employee-dashboard .nav-item {
+    font-size: 10px;
+  }
+
+  .employee-dashboard .premium-btn {
+    padding: 9px 12px;
+    font-size: 10px;
+  }
+
+  .employee-dashboard .hero {
+    padding: 40px 18px 44px;
+  }
+
+  .employee-dashboard .layout {
+    width: min(100% - 24px, 440px);
+  }
+
+  .employee-dashboard .sidebar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .employee-dashboard .job-card {
+    padding: 19px;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "short_name": "Vitae",
+  "name": "Vitae - Campus Careers & Hiring",
+  "icons": [
+    {
+      "src": "vitae-leaf.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#258044",
+  "background_color": "#ffffff"
+}
