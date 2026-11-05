@@ -11,3 +11,4 @@ email-validator
 razorpay>=1.4.2
 fastapi
 uvicorn[standard]
+supabase
