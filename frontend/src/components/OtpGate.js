@@ -11,7 +11,16 @@ const OTP_REQUEST_TIMEOUT_MS = 20000;
 
 function getErrorMessage(error, fallback) {
   const detail = error.response?.data?.detail;
-  return typeof detail === "string" ? detail : fallback;
+  if (typeof detail === "string") {
+    return detail;
+  }
+  if (error.code === "ECONNABORTED") {
+    return "The verification server took too long to respond. Please try again.";
+  }
+  if (error.request && !error.response) {
+    return `Cannot reach the verification server at ${axios.defaults.baseURL}. Start the backend and try again.`;
+  }
+  return fallback;
 }
 
 export default function OtpGate({ children }) {
@@ -110,8 +119,8 @@ export default function OtpGate({ children }) {
   const verifyOtp = async (event) => {
     event.preventDefault();
     setError("");
-    if (!/^\d{4,8}$/.test(otp)) {
-      setError("Enter the OTP from your SMS.");
+    if (!/^\d{6}$/.test(otp)) {
+      setError("Enter the 6-digit code from your email.");
       return;
     }
 

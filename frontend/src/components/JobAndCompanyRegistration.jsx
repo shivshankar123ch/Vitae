@@ -106,7 +106,7 @@ function JobAndCompanyRegistration() {
 
       // Submit job data
       const jobResponse = await axios.post(
-        "http://127.0.0.1:8000/jobs/",
+        "https://brd-5.onrender.com/jobs/",
         jobData
       );
 

@@ -76,7 +76,7 @@ const handleApply = async (company) => {
     }
 
     const response = await axios.post(
-      "http://127.0.0.1:8000/jobs/Posting/apply",
+      "https://brd-5.onrender.com/jobs/Posting/apply",
       null,
       {
         params: {
