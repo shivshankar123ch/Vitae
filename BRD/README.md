@@ -38,13 +38,14 @@ The API associates each post with the recruiter account from its access token;
 uploaded photos are served from `/uploads/recruiter-feedback/`.
 
 The frontend is gated by an email OTP check before any page is shown. Configure
-`RESEND_API_KEY` with a Resend API key and `RESEND_FROM_EMAIL` with a sender
-address on a domain verified in Resend. Set `OTP_SESSION_SECRET` to a separate
-random secret of at least 32 characters in the backend `.env` file (see
-`.env.example`). OTP challenges expire after five minutes, have a six-digit
-code and a five-attempt limit, and are rate-limited per email address. Only
-hashed email addresses and OTPs are stored for each challenge. Successful
-verification sets an HttpOnly verification cookie for 12 hours.
+`SMTP_KEY` with a Brevo API key and `SMTP_FROM_EMAIL` with a sender address
+verified in Brevo. `SMTP_KEY` is used as an API key; no SMTP connection is
+made. Set `OTP_SESSION_SECRET` to a separate random secret of at least 32
+characters in the backend `.env` file (see `.env.example`). OTP challenges
+expire after five minutes, have a six-digit code and a five-attempt limit, and
+are rate-limited per email address. Only hashed email addresses and OTPs are
+stored for each challenge. Successful verification sets an HttpOnly
+verification cookie for 12 hours.
 `CORS_ORIGINS` must include the frontend origin; use `OTP_COOKIE_SECURE=true`
 when serving over HTTPS. The frontend API base URL can be set with
 `REACT_APP_API_BASE_URL`; for local development it defaults to

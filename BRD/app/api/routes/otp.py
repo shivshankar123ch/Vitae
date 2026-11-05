@@ -31,10 +31,10 @@ COOKIE_NAME = "site_otp_session"
 
 
 def _require_otp_settings():
-    if not settings.RESEND_API_KEY or not settings.RESEND_FROM_EMAIL:
+    if not settings.BREVO_API_KEY or not settings.BREVO_FROM_EMAIL:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Email verification is not configured. Set RESEND_API_KEY and RESEND_FROM_EMAIL on the backend.",
+            detail="Email verification is not configured. Set SMTP_KEY and SMTP_FROM_EMAIL on the backend.",
         )
     if not settings.OTP_SESSION_SECRET or len(settings.OTP_SESSION_SECRET) < 32:
         raise HTTPException(
@@ -68,10 +68,10 @@ def _mask_email(email: str) -> str:
 def _send_otp_email(email: str, otp: str) -> None:
     escaped_otp = html.escape(otp)
     payload = {
-        "from": settings.RESEND_FROM_EMAIL,
-        "to": [email],
+        "sender": {"email": settings.BREVO_FROM_EMAIL, "name": "Vitae"},
+        "to": [{"email": email}],
         "subject": "Your Vitae verification code",
-        "html": (
+        "htmlContent": (
             "<div style=\"font-family:Arial,sans-serif;line-height:1.6\">"
             "<h2>Verify your email</h2>"
             f"<p>Your Vitae verification code is "
@@ -79,14 +79,14 @@ def _send_otp_email(email: str, otp: str) -> None:
             "<p>This code expires in 5 minutes. If you did not request it, "
             "you can ignore this email.</p></div>"
         ),
-        "text": f"Your Vitae verification code is {otp}. It expires in 5 minutes.",
+        "textContent": f"Your Vitae verification code is {otp}. It expires in 5 minutes.",
     }
     request = urllib.request.Request(
-        "https://api.resend.com/emails",
+        "https://api.brevo.com/v3/smtp/email",
         data=json.dumps(payload).encode("utf-8"),
         headers={
             "Accept": "application/json",
-            "Authorization": f"Bearer {settings.RESEND_API_KEY}",
+            "api-key": settings.BREVO_API_KEY,
             "Content-Type": "application/json",
             "User-Agent": "Vitae-OTP/1.0",
         },
@@ -96,19 +96,19 @@ def _send_otp_email(email: str, otp: str) -> None:
         with urllib.request.urlopen(request, timeout=12) as result:
             response_data = json.loads(result.read().decode("utf-8"))
     except urllib.error.HTTPError as error:
-        logger.warning("Resend email request returned HTTP %s", error.code)
+        logger.warning("Brevo email request returned HTTP %s", error.code)
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
-            detail="The email provider could not send the verification code. Check your Resend sender configuration.",
+            detail="The email provider could not send the verification code. Check your Brevo API key and verified sender address.",
         ) from error
     except (urllib.error.URLError, TimeoutError, UnicodeDecodeError, json.JSONDecodeError) as error:
-        logger.warning("Resend email request failed: %s", type(error).__name__)
+        logger.warning("Brevo email request failed: %s", type(error).__name__)
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
             detail="Could not reach the email provider. Please try again.",
         ) from error
-    if not isinstance(response_data, dict) or not isinstance(response_data.get("id"), str):
-        logger.warning("Resend returned an unexpected email response.")
+    if not isinstance(response_data, dict) or not isinstance(response_data.get("messageId"), str):
+        logger.warning("Brevo returned an unexpected email response.")
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
             detail="The email provider returned an unexpected response.",

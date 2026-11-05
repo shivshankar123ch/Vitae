@@ -17,8 +17,11 @@ class Settings:
     PLAN_ADMIN_USERNAME = os.getenv("PLAN_ADMIN_USERNAME")
     PLAN_ADMIN_PASSWORD = os.getenv("PLAN_ADMIN_PASSWORD")
     PLAN_ADMIN_JWT_SECRET = os.getenv("PLAN_ADMIN_JWT_SECRET")
-    RESEND_API_KEY = os.getenv("RESEND_API_KEY")
-    RESEND_FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL")
+    BREVO_API_KEY = os.getenv("SMTP_KEY") or os.getenv("BREVO_API_KEY")
+    BREVO_FROM_EMAIL = (
+        os.getenv("SMTP_FROM_EMAIL")
+        or os.getenv("BREVO_FROM_EMAIL")
+    )
     OTP_SESSION_SECRET = os.getenv("OTP_SESSION_SECRET")
     OTP_COOKIE_SECURE = os.getenv("OTP_COOKIE_SECURE", "false").strip().lower() in {
         "1",
