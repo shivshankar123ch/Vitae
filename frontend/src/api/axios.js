@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000',
+    baseURL: process.env.REACT_APP_API_BASE_URL || 'https://brd-6.onrender.com',
     withCredentials: true,
 });
 
 // import axios from 'axios';
 
 // export default axios.create({
-//     REGISTER_URL: 'http://127.0.0.1:8000/token',
+//     REGISTER_URL: 'https://brd-6.onrender.com/token',
 //     headers: {
 //         'Content-Type': 'application/json'
 //     },

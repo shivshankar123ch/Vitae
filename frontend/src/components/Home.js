@@ -33,7 +33,7 @@ useEffect(() => {
   const fetchCompanyCount = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/company/ Company & Recruiter Management/"
+        "https://brd-6.onrender.com/company/ Company & Recruiter Management/"
       );
 
       setCompanyCount(response.data.length);
@@ -51,7 +51,7 @@ useEffect(() => {
 const fetchCompanies = async () => {
   try {
     const response = await axios.get(
-      "http://127.0.0.1:8000/company/ Company & Recruiter Management/"
+      "https://brd-6.onrender.com/company/ Company & Recruiter Management/"
     );
 
     setCompanies(response.data);
@@ -76,7 +76,7 @@ const handleApply = async (company) => {
     }
 
     const response = await axios.post(
-      "https://brd-5.onrender.com/jobs/Posting/apply",
+      "https://brd-6.onrender.com/jobs/Posting/apply",
       null,
       {
         params: {

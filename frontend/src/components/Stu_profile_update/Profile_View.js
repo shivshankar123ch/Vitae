@@ -78,7 +78,7 @@
 //       data.append("experiences", JSON.stringify(experiences));
 
 //       const response = await axios.post(
-//         "http://127.0.0.1:8000/students/students",
+//         "https://brd-6.onrender.com/students/students",
 //         data,
 //         { headers: { "Content-Type": "multipart/form-data" } }
 //       );
@@ -110,7 +110,7 @@
 //       }
 
 //       const res = await axios.get(
-//         `http://127.0.0.1:8000/students/students/${id}`
+//         `https://brd-6.onrender.com/students/students/${id}`
 //       );
 
 //       setSavedProfile(res.data);

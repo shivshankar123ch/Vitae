@@ -100,13 +100,13 @@ function JobAndCompanyRegistration() {
 
       // Submit company data
       const companyResponse = await axios.post(
-        "http://127.0.0.1:8000/company/ Company & Recruiter Management/",
+        "https://brd-6.onrender.com/company/ Company & Recruiter Management/",
         companyData
       );
 
       // Submit job data
       const jobResponse = await axios.post(
-        "https://brd-5.onrender.com/jobs/",
+        "https://brd-6.onrender.com/jobs/",
         jobData
       );
 

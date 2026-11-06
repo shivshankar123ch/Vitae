@@ -20,7 +20,7 @@ export default function SkillName() {
     try {
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/students/Profile/skills",
+        "https://brd-6.onrender.com/students/Profile/skills",
         {
           skill_name: skillData.skill_name,
         }
